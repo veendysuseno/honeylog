@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10110e">
+  <title>HoneyLog — Cybersecurity Learning Journal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="HoneyLog home"><span class="brand-mark">⬡</span><span>Honey<span class="gold">Log</span><small>CYBERSECURITY LEARNING JOURNAL</small></span></a>
+      <nav><a href="#guide">Guide</a><a href="#basic">Basic Info</a><a href="#journal">Journal</a><a href="#evidence">Evidence</a></nav>
+      <button class="btn btn-ghost" id="resetBtn" type="button">Reset form</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> PERSONAL KNOWLEDGE HARVESTER</div>
+        <h1>Turn every challenge<br>into <span class="gold">knowledge.</span></h1>
+        <p>Catat proses belajar cybersecurity, simpan bukti, dan panen insight dari setiap lab yang kamu selesaikan.</p>
+        <div class="hero-tags"><span>◈ LEARN</span><span>◈ DOCUMENT</span><span>◈ GROW</span></div>
+      </section>
+
+      <div class="layout">
+        <form id="honeyForm">
+          <section class="panel" id="basic">
+            <div class="section-head"><div><span class="step">01 / OVERVIEW</span><h2>Basic Info</h2></div><span class="icon">◷</span></div>
+            <div class="grid two">
+              <label>Tanggal<input id="date" name="date" type="date" required></label>
+              <label>Hari ke- (Streak)<input id="streak" name="streak" type="number" min="1" value="1" required></label>
+              <label>Durasi (Menit)<input id="duration" name="duration" type="number" min="1" value="60" required></label>
+              <label>Platform<select id="platform" name="platform"><option>TryHackMe</option><option>Hack The Box</option><option>OverTheWire</option><option>PortSwigger Web Security Academy</option><option>Linux Journey</option><option>Other</option></select></label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-head"><div><span class="step">02 / MISSION</span><h2>Mission Detail</h2></div><span class="icon">⌘</span></div>
+            <div class="grid two">
+              <label>Nama Room / Lab<input id="room" name="room" placeholder="e.g. Linux Shells" required></label>
+              <label>Topik<input id="topic" name="topic" placeholder="e.g. Linux" required></label>
+            </div>
+            <label>Link URL<input id="url" name="url" type="url" placeholder="https://..."></label>
+          </section>
+
+          <section class="panel" id="journal">
+            <div class="section-head"><div><span class="step">03 / REFLECTION</span><h2>Learning Journal</h2></div><span class="icon">✎</span></div>
+            <label>Tujuan Belajar<textarea id="goal" name="goal" rows="2" placeholder="Paham basic Linux, coba terminal..."></textarea></label>
+            <label>Ringkasan (Notes)<textarea id="notes" name="notes" rows="3" placeholder="Shell itu tempat kasih perintah... (bahasa santai oke)"></textarea></label>
+            <div class="grid two">
+              <label>Kendala<textarea id="obstacle" name="obstacle" rows="3" placeholder="Bingung bedain ls sama cat..."></textarea></label>
+              <label>Insight<textarea id="insight" name="insight" rows="3" placeholder="Ternyata hacker itu ga cuma klik-klik tools..."></textarea></label>
+            </div>
+            <label>Next Step<textarea id="next" name="next" rows="2" placeholder="Lanjut room Networking Concepts..."></textarea></label>
+          </section>
+
+          <section class="panel" id="evidence">
+            <div class="section-head"><div><span class="step">04 / PROOF OF WORK</span><h2>Evidence Locker</h2></div><span class="icon">▧</span></div>
+            <label class="upload-zone" for="screenshots"><span class="upload-icon">＋</span><strong>Tambah Screenshot</strong><span>Upload screenshot progres kamu (scans, exploit, terminal, etc).</span><small>PNG, JPG, WEBP · Pilih satu atau beberapa gambar</small><input id="screenshots" type="file" accept="image/*" multiple></label>
+            <div id="evidenceList" class="evidence-list"><p class="empty">Belum ada bukti visual.</p></div>
+          </section>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">✦ Hasilkan Madu Pengetahuan</button>
+            <button class="btn btn-secondary" id="downloadBtn" type="button">↓ Download PDF</button>
+          </div>
+          <p class="hint">Saran: download atau cetak sebagai PDF setelah log selesai dibuat untuk mengamankan dokumentasi belajar Anda.</p>
+        </form>
+
+        <aside class="sidebar">
+          <section class="panel harvest">
+            <div class="section-head"><div><span class="step">YOUR HARVEST</span><h2>Honey Harvest</h2></div><span class="honey">⬡</span></div>
+            <div class="honey-level"><span>Honey Level (Data)</span><strong id="level">Empty</strong></div>
+            <div class="metric"><div><span>Pollen (Evidence)</span><strong id="pollen">0 Units</strong></div><span class="metric-icon">▧</span></div>
+            <div class="metric"><div><span>Total Progress</span><strong id="progressText">0%</strong></div><span class="metric-icon">↗</span></div>
+            <div class="progress-track"><div id="progressBar"></div></div>
+            <p class="micro">Progress dihitung dari kelengkapan data jurnal dan evidence.</p>
+          </section>
+          <section class="panel" id="guide">
+            <div class="section-head"><div><span class="step">QUICK GUIDE</span><h2>How to harvest</h2></div></div>
+            <ol class="guide-list"><li><span>1</span><div><strong>Log your session</strong><p>Isi detail lab dan waktu belajar.</p></div></li><li><span>2</span><div><strong>Reflect honestly</strong><p>Catat kendala dan hal baru yang dipahami.</p></div></li><li><span>3</span><div><strong>Attach evidence</strong><p>Simpan screenshot yang tidak memuat password, token, atau data sensitif.</p></div></li><li><span>4</span><div><strong>Export your log</strong><p>Download PDF sebagai arsip belajar.</p></div></li></ol>
+          </section>
+          <section class="panel saved-panel"><span class="step">LOCAL WORKSPACE</span><h3>Progress tersimpan di browser</h3><p>Draft otomatis disimpan di perangkat ini. Screenshot tidak diunggah ke server.</p><span class="save-status" id="saveStatus">● Autosave aktif</span></section>
+        </aside>
+      </div>
+    </main>
+    <footer><span class="brand-mini">⬡ Honey<span class="gold">Log</span></span><span>Build skills. Keep receipts. Stay curious.</span><span>© <span id="year"></span> HoneyLog</span></footer>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
